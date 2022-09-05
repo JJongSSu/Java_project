@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -7,6 +8,10 @@ import java.util.Scanner;
 public class TeamProjectPoll {
 
     public TeamProjectPoll(Statement stmt) {
+    }
+
+    private String max(int unique_ID) {
+        return null;
     }
 
     public String PollFunction() throws SQLException{
@@ -63,11 +68,18 @@ public class TeamProjectPoll {
                 "values ( " + (Unique_ID+1) + ", " + name + one + ", " + two + ", " + three + ", " + four + " ) ";
         int val = stmt.executeUpdate(QUERY); 
 
-        return QUERY;
-    }
+        QUERY = "select Unique_ID, Name, 1, 2, 3, 4 " + "from CarSurvey_Answer ";
+        ResultSet rs = stmt.executeQuery(QUERY); 
+        while (rs.next()) {
+            System.out.print("Unique_ID: " + rs.getInt("Unique_ID"));
+            System.out.print(", Name: " + rs.getString("Name"));
+            System.out.print(", 1: " + rs.getInt("1"));
+            System.out.print(", 2: " + rs.getInt("2"));
+            System.out.print(", 3: " + rs.getInt("3"));
+            System.out.print(", 4: " + rs.getInt("4"));
+        }
 
-    private String max(int unique_ID) {
-        return null;
+        return QUERY;
     }
     
 }
