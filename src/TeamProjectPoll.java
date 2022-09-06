@@ -1,3 +1,4 @@
+package src;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,56 +8,49 @@ import java.util.Scanner;
 
 public class TeamProjectPoll {
 
-    public TeamProjectPoll(Statement stmt) {
-    }
-
     private String max(int unique_ID) {
-        return null;
+        return max(unique_ID);
     }
 
-    public String PollFunction() throws SQLException{
+    public String PollFunction(Statement stmt) throws SQLException{
 
-        final String USER = "root";
-        final String PASS = "tbrs00002b";
-        final String DB_URL = "jdbc:mysql://localhost/iphones_datebase";
+        // final String USER = "root";
+        // final String PASS = "tbrs00002b";
+        // final String DB_URL = "jdbc:mysql://localhost/iphones_datebase";
 
-        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-        Statement stmt = conn.createStatement(); 
+        // Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        // Statement stmt = conn.createStatement(); 
         
         Scanner scanner = new Scanner(System.in);
         String name = "";
 
-        String str = String.format("%s\n%s\n%s\n%s\n%s\n"
+        String str = String.format("%s\n%s\n%s\n%s\n%s\n%s\n"
             ,"1. 매우 만족"
             ,"2. 만족"
             ,"3. 보통"
             ,"4. 불만족"
-            ,"5. 매우 불만족");
+            ,"5. 매우 불만족"
+            ,"답변 : ");
 
         System.out.println("이름을 입력하세요 : ");
         name = scanner.nextLine();
 
         System.out.println("설문 1. 이 차의 가격형성에 대해 만족하십니까?");
         System.out.println(str);
-        System.out.println("답변 : ");
         int one = Integer.parseInt(scanner.nextLine());
 
         System.out.println("설문 2. 디자인에 대해 만족하십니까?");
         System.out.println(str);
-        System.out.println("답변 : ");
         scanner = new Scanner(System.in);
         int two = Integer.parseInt(scanner.nextLine());
 
         System.out.println("설문 3. 차 내부 사용감에 대해 만족하십니까?");
         System.out.println(str);
-        System.out.println("답변 : ");
         int three = Integer.parseInt(scanner.nextLine());
 
         System.out.println("설문 4. 쿠션성에 대해 만족하십니까?");
         System.out.println(str);
-        System.out.println("답변 : ");
         int four = Integer.parseInt(scanner.nextLine());
-
 
         String QUERY = "select Unique_ID, Name, 1, 2, 3, 4 " + "from CarSurvey_Answer ";
         

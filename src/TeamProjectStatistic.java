@@ -1,11 +1,10 @@
+package src;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TeamProjectStatistic {
-    public TeamProjectStatistic(Statement stmt) {
-    }
 
     public String StatisticFunction() throws SQLException{
 
@@ -15,7 +14,6 @@ public class TeamProjectStatistic {
                 
         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
         Statement stmt = conn.createStatement(); 
-        
 
         // 이름별
         String QUERY = "select 이름_통계, Unique_A_ID, Unique_ID " + "from 이름별 " + "order by Unique_ID ";

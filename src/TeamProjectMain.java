@@ -1,3 +1,4 @@
+package src;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -6,8 +7,8 @@ import java.util.Scanner;
 
 public class TeamProjectMain {
     public static int s = 1;
-    static int p = 2;
-    static int q = 3;
+    public static int p = 2;
+    public static int q = 3;
 
     public void main(String[] args) throws SQLException{
 
@@ -25,12 +26,12 @@ public class TeamProjectMain {
         int answer = Integer.parseInt(scanner.next());
 
         if (answer == s){
-            TeamProjectStatistic statistic = new TeamProjectStatistic(stmt);
+            TeamProjectStatistic statistic = new TeamProjectStatistic();
             String str = statistic.StatisticFunction();
         }
         else if (answer == p){
-            TeamProjectPoll poll = new TeamProjectPoll(stmt);
-            String str = poll.PollFunction();
+            TeamProjectPoll poll = new TeamProjectPoll();
+            String str = poll.PollFunction(stmt);
         }
         else if (answer == q){
             System.out.println("감사합니다. 시스템을 종료합니다.");
